@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
 const Campground = require("./models/campground");
 const methodOverride = require("method-override");
@@ -16,6 +17,7 @@ db.once("open", () => {
   console.log("Database Connected");
 });
 
+app.engine("ejs", ejsMate); //tells app to use ejsMate as the engine instead of the default one
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 
