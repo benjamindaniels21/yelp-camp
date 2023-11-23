@@ -8,6 +8,7 @@ const methodOverride = require("method-override");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const Joi = require("joi");
+const { campgroundSchema } = require("./Schemas");
 
 mongoose.connect("mongodb://localhost:27017/yelp-camp");
 
