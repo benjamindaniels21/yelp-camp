@@ -26,6 +26,14 @@ app.engine("ejs", ejsMate); //tells app to use ejsMate as the engine instead of 
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+const sessionConfig = {
+  secret: "thisismysecret",
+  resave: false,
+  saveUninitialized: true,
+  expires: Date.now() + 1000 * 60 * 60 * 24 * 7, //expires in a week (in milliseconds)
+  maxAge: 1000 * 60 * 60 * 24 * 7, //expires in a week (in milliseconds)
+};
+app.use(session(sessionConfig));
 
 app.use("/campgrounds", campgrounds);
 app.use("/campgrounds/:id/reviews", reviews);
