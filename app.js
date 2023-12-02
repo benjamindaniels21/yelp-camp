@@ -18,12 +18,14 @@ db.once("open", () => {
   console.log("Database Connected");
 });
 
-app.engine("ejs", ejsMate); //tells app to use ejsMate as the engine instead of the default one
-app.use(methodOverride("_method"));
-app.use(express.urlencoded({ extended: true }));
-
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+app.engine("ejs", ejsMate); //tells app to use ejsMate as the engine instead of the default one
+
+app.use(methodOverride("_method"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/campgrounds", campgrounds);
 app.use("/campgrounds/:id/reviews", reviews);
