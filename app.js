@@ -5,7 +5,6 @@ const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const ExpressError = require("./utils/ExpressError");
-const Joi = require("joi");
 
 const campgrounds = require("./routes/campgrounds");
 const reviews = require("./routes/reviews");
