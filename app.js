@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const ExpressError = require("./utils/ExpressError");
 const session = require("express-session");
+const flash = require("connect-flash");
 
 const campgrounds = require("./routes/campgrounds");
 const reviews = require("./routes/reviews");
@@ -34,6 +35,7 @@ const sessionConfig = {
   maxAge: 1000 * 60 * 60 * 24 * 7, //expires in a week (in milliseconds)
 };
 app.use(session(sessionConfig));
+app.use(flash);
 
 app.use("/campgrounds", campgrounds);
 app.use("/campgrounds/:id/reviews", reviews);
