@@ -35,7 +35,7 @@ const sessionConfig = {
   maxAge: 1000 * 60 * 60 * 24 * 7, //expires in a week (in milliseconds)
 };
 app.use(session(sessionConfig));
-app.use(flash);
+app.use(flash());
 
 app.use("/campgrounds", campgrounds);
 app.use("/campgrounds/:id/reviews", reviews);
