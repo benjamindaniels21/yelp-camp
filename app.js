@@ -1,5 +1,4 @@
 const express = require("express");
-const app = express();
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
@@ -19,14 +18,16 @@ db.once("open", () => {
   console.log("Database Connected");
 });
 
+const app = express();
+
+app.engine("ejs", ejsMate); //tells app to use ejsMate as the engine instead of the default one
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-app.engine("ejs", ejsMate); //tells app to use ejsMate as the engine instead of the default one
-
-app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
+
 const sessionConfig = {
   secret: "thisismysecret",
   resave: false,
@@ -34,16 +35,18 @@ const sessionConfig = {
   expires: Date.now() + 1000 * 60 * 60 * 24 * 7, //expires in a week (in milliseconds)
   maxAge: 1000 * 60 * 60 * 24 * 7, //expires in a week (in milliseconds)
 };
+
 app.use(session(sessionConfig));
 app.use(flash());
 
-app.use("/campgrounds", campgrounds);
-app.use("/campgrounds/:id/reviews", reviews);
-
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
+  res.locals.success = req.flash("error");
   next();
 });
+
+app.use("/campgrounds", campgrounds);
+app.use("/campgrounds/:id/reviews", reviews);
 
 app.get("/", (req, res) => {
   res.render("home");
