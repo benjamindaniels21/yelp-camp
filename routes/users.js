@@ -23,4 +23,10 @@ router.post(
   })
 );
 
+router.get("/login", (req, res) => {
+  res.render("users/login");
+});
+
+router.post("/login", (req, res) => {});
+
 module.exports = router;
