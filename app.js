@@ -45,14 +45,23 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
-app.use(passport.initialize);
-app.use(passport.session);
+app.use(passport.initialize());
+app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
+});
+
+app.get("/fakeuser", async (req, res) => {
+  const user = new User({ email: "ben@ben.com", username: "Ben" });
+  const newUser = await User.register(user, "chicken");
+  res.send(newUser);
 });
 
 app.use("/campgrounds", campgrounds);
