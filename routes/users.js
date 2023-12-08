@@ -36,7 +36,7 @@ router.post(
   }),
   (req, res) => {
     req.flash("success", "welcome back!");
-    res.redirect("/campgrounds");
+    res.redirect("/campgrounds/new");
   }
 );
 

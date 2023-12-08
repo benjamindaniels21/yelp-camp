@@ -25,11 +25,13 @@ router.get(
 );
 
 router.get("/new", isLoggedIn, (req, res) => {
+  console.log("success!");
   res.render("campgrounds/new");
 });
 
 router.post(
   "/",
+  isLoggedIn,
   validateCampground,
   catchAsync(async (req, res, next) => {
     // if (!req.body.campground) throw new ExpressError('Invalid Campground Data', 400);
