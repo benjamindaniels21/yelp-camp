@@ -25,7 +25,6 @@ router.get(
 );
 
 router.get("/new", isLoggedIn, (req, res) => {
-  console.log("success!");
   res.render("campgrounds/new");
 });
 
@@ -83,6 +82,7 @@ router.put(
 
 router.delete(
   "/:id",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Campground.findByIdAndDelete(id);
