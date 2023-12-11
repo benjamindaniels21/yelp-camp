@@ -1,5 +1,4 @@
 const express = require("express");
-const ExpressError = require("./utils/ExpressError");
 const router = express.Router();
 const catchAsync = require("../utils/catchAsync");
 const {
