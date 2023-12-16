@@ -6,19 +6,12 @@ const {
   validateCampground,
   isAuthor,
 } = require("../middleware.js");
+const campgrounds = require("../controllers/campground.js");
 const Campground = require("../models/campground");
 
-router.get(
-  "/",
-  catchAsync(async (req, res) => {
-    const campgrounds = await Campground.find({});
-    res.render("campgrounds/index", { campgrounds });
-  })
-);
+router.get("/", catchAsync(campgrounds.index));
 
-router.get("/new", isLoggedIn, (req, res) => {
-  res.render("campgrounds/new");
-});
+router.get("/new", isLoggedIn, campgrounds.renderNewForm);
 
 router.post(
   "/",
