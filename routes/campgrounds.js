@@ -7,7 +7,6 @@ const {
   isAuthor,
 } = require("../middleware.js");
 const campgrounds = require("../controllers/campground.js");
-const Campground = require("../models/campground");
 
 router.get("/", catchAsync(campgrounds.index));
 
