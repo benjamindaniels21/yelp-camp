@@ -10,10 +10,36 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.createCampground = async (req, res, next) => {
-  // if (!req.body.campground) throw new ExpressError('Invalid Campground Data', 400);
   const campground = new Campground(req.body.campground);
   campground.author = req.user._id;
   await campground.save();
   req.flash("success", "Successfully made a new campground!");
   res.redirect(`/campgrounds/${campground._id}`);
+};
+
+module.exports.showCampground = async (req, res) => {
+  const campground = await Campground.findById(req.params.id)
+    .populate({
+      path: "reviews",
+      populate: {
+        path: "author",
+      },
+    })
+    .populate("author");
+  // console.log(campground);
+  if (!campground) {
+    req.flash("error", "Cannot find that campground!");
+    return res.redirect("/campgrounds");
+  }
+  res.render("campgrounds/show", { campground });
+};
+
+module.exports.renderEditForm = async (req, res) => {
+  const { id } = req.params;
+  const campground = await Campground.findById(id);
+  if (!campground) {
+    req.flash("error", "Cannot find that campground!");
+    return res.redirect("/campgrounds");
+  }
+  res.render("campgrounds/edit", { campground });
 };
