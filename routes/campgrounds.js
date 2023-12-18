@@ -37,20 +37,6 @@ router.put(
   catchAsync(campgrounds.updateCampground)
 );
 
-router.delete(
-  "/:id",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const campground = await Campground.findById(id);
-    if (!campground.author.equals(req.user._id)) {
-      req.flash("error", "You do not have permission to update!");
-      return res.redirect(`/campgrounds/${id}`);
-    }
-    await Campground.findByIdAndDelete(id);
-    req.flash("error", "Successfully deleted campground");
-    res.redirect("/campgrounds");
-  })
-);
+router.delete("/:id", isLoggedIn, catchAsync(campgrounds.deleteCampground));
 
 module.exports = router;
