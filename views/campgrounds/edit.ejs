@@ -38,6 +38,15 @@
           <input class="form-control" type="file" id="formFileMultiple" multiple>
         </div>
         <div class="mb-3">
+          <% campground.images.forEach(function(img, i) { %>
+              <img src="<%=img.url  %>" class="img-thumbnail" alt="">
+              <div class="form-check-inline">
+                <input type="checkbox" name="" id="img-<%=i%>">
+              </div>
+              <label for="img-<%=i%>">Delete?</label>
+          <% }) %>
+        </div>
+        <div class="mb-3">
           <button class="btn btn-info">Update Campground</button>
         </div>
       </form>
