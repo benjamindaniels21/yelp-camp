@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 const Review = require("./review");
 
 const ImageSchema = new Schema({
-      url: String,
-      filename: String,
-})
+  url: String,
+  filename: String,
+});
 
-ImageSchema.virtual("thumbnail").get(function(){
-  this.url.replace('/upload', '/upload/w_200');
-})
+ImageSchema.virtual("thumbnail").get(function () {
+  this.url.replace("/upload", "/upload/w_200");
+});
 
 const CampgroundSchema = new Schema({
   title: String,
@@ -28,9 +28,6 @@ const CampgroundSchema = new Schema({
     },
   ],
 });
-
-
-img.thumbnail => 
 
 CampgroundSchema.post("findOneAndDelete", async function (doc) {
   if (doc) {
