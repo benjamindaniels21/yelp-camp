@@ -33,10 +33,6 @@ const seedDB = async () => {
           url: "https://res.cloudinary.com/dsprnjo2q/image/upload/v1703164882/YelpCamp/fywvaem8sgpioayqitdw.jpg",
           filename: "YelpCamp/fywvaem8sgpioayqitdw",
         },
-        {
-          url: "https://res.cloudinary.com/dsprnjo2q/image/upload/v1703164926/YelpCamp/irtrpznmg92ncrwut77s.jpg",
-          filename: "YelpCamp/irtrpznmg92ncrwut77s",
-        },
       ],
       description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam tempore velit vel dignissimos reprehenderit quam, ipsum eligendi quos eum molestias, eius at, aliquid excepturi fugit animi nobis voluptatum laudantium fuga.`,
       price: price,
