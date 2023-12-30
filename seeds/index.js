@@ -26,12 +26,16 @@ const seedDB = async () => {
       title: `${sample(descriptors)} ${sample(places)}`,
       images: [
         {
-          url: "https://res.cloudinary.com/douqbebwk/image/upload/v1600060601/YelpCamp/ahfnenvca4tha00h2ubt.png",
-          filename: "YelpCamp/ahfnenvca4tha00h2ubt",
+          url: "https://res.cloudinary.com/dsprnjo2q/image/upload/v1703164568/YelpCamp/pars-sahin-V7uP-XzqX18-unsplash_xx0sic.jpg",
+          filename: "YelpCamp/pars-sahin-V7uP-XzqX18-unsplash_xx",
         },
         {
-          url: "https://res.cloudinary.com/dsprnjo2q/image/upload/v1703164882/YelpCamp/fywvaem8sgpioayqitdw.jpg",
-          filename: "YelpCamp/fywvaem8sgpioayqitdw",
+          url: "https://res.cloudinary.com/dsprnjo2q/image/upload/v1703164568/YelpCamp/josh-hild-8f_VQ3EFbTg-unsplash_zubctq.jpg",
+          filename: "YelpCamp/josh-hild-8f_VQ3EFbTg-unsplash_zubctq",
+        },
+        {
+          url: "https://res.cloudinary.com/dsprnjo2q/image/upload/v1703164570/YelpCamp/wren-meinberg-xqV9QdGOSas-unsplash_q3nl17.jpg",
+          filename: "YelpCamp/wren-meinberg-xqV9QdGOSas-unsplash_q3nl17",
         },
       ],
       description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam tempore velit vel dignissimos reprehenderit quam, ipsum eligendi quos eum molestias, eius at, aliquid excepturi fugit animi nobis voluptatum laudantium fuga.`,
